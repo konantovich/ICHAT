@@ -13,7 +13,7 @@ class SetupProfileViewController : UIViewController {
     
     let welcomeLabel = UILabel(text: "Set up profile", font: .avenir26())
     
-    let userPhotoImageView = addPhotoView()
+    let userPhotoImageView = AddPhotoView()
     
     let nameLabel = UILabel(text: "Full Name")
     let aboutLabel = UILabel(text: "About me")

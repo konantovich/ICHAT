@@ -5,7 +5,6 @@
 //  Created by Antbook on 23.11.2021.
 //
 
-import Foundation
 import UIKit
 
 
@@ -19,5 +18,16 @@ extension UIImageView {
         self.contentMode = contentMode
         
     }
+ 
+}
+
+
+extension UIImageView {
     
+    //change color for picture
+    func setupColor(color: UIColor) {
+        let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+        self.image = templateImage
+        self.tintColor = color
+    }
 }

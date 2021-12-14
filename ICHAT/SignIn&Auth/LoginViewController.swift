@@ -47,14 +47,31 @@ class LoginViewController: UIViewController {
         
         onboardLabel.font = .avenir20()
         
-        
-        
         setupConstraints()
         
+        loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
+    }
+    
+    @objc private func loginButtonAction () {
+        print("click login123")
+        AuthService.shared.loginUser(email: emailTextField.text, password: passwordTextField.text) { result in
+            switch result {
+            
+            case .success(let user):
+                self.showAlert(with: "Succes!", and: "User succefull login!")
+            case .failure(let error):
+                self.showAlert(with: "Error: ", and: "\(error.localizedDescription)")
+            }
+            
+        }
         
     }
     
-    
+    @objc private func signUpButtonAction () {
+        print("click sign up")
+        
+    }
     
     
 }

@@ -11,15 +11,6 @@ class AuthViewController: UIViewController {
     
     
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        setupConstrains()
-        
-       
-    }
-    
     let logoImageView = UIImageView(image: UIImage(named: "Logo"), contentMode: .scaleAspectFit)
     
     let googleLabel = UILabel(text: "Get started with")
@@ -28,12 +19,46 @@ class AuthViewController: UIViewController {
     
     let googleButton = UIButton(title: "Google", titleColor: .black, backgroundColor: .white, isShadow: true)
     
-    let emailButton = UIButton(title: "Email", titleColor: .buttonWhite(), backgroundColor: .buttonDark())
+    let emailButton = UIButton(title: "Email", titleColor: .mainWhite(), backgroundColor: .buttonDark())
     
     let loginButton = UIButton(title: "Login", titleColor: .buttonRed(), backgroundColor: .white, isShadow: true)
     
+    let signUpVC = SignUpViewController()
+    let loginButtonVC = LoginViewController()
+    let mainTabBarVC = MainTabBarController()
     
-  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupConstrains()
+        
+       
+        googleButton.addTarget(self, action: #selector(googleButtonAction), for: .touchUpInside)
+        emailButton.addTarget(self, action: #selector(emailButtonAction), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+    }
+    
+    
+    
+
+    @objc private func googleButtonAction () {
+        print("click google")
+        present(mainTabBarVC, animated: true, completion: nil)
+        
+    }
+    
+    @objc private func emailButtonAction () {
+        print("click email")
+        present(signUpVC, animated: true, completion: nil)
+        
+    }
+    @objc private func loginButtonAction () {
+        print("click login")
+        present(loginButtonVC, animated: true, completion: nil)
+        
+    }
+
+
 
 
 }

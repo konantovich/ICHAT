@@ -51,11 +51,57 @@ class SignUpViewController: UIViewController {
         onboardLabel.font = .avenir20()
         
         setupConstraints()
+        signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
 
+        
+    }
+    @objc private func signUpButtonAction () {
+        print("click sign up")
+        
+        
+        
+        AuthService.shared.createUser(email: emailTextField.text,
+                                      password: passwordTextField.text,
+                                      confirmPassword: confirmPasswordTextField.text) { result in
+            
+            switch result {
+                
+            case .success(let user):
+                
+                
+                self.showAlert(with: "Succes!", and: "User succefull register!")
+               
+                print(user.email!)
+                
+            case .failure(let error):
+                print(error)
+                
+                self.showAlert(with: "Error: ", and: "\(error.localizedDescription)")
+                
+            }
+            
+        }
+            
+        }
+        
+    
+    
+}
+
+extension UIViewController {
+    
+    func showAlert (with title: String, and message: String) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
         
     }
     
 }
+
+
 
 //MARK: - Setup constraints
 extension SignUpViewController {

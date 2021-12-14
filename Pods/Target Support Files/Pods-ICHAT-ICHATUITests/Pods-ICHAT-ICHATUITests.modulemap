@@ -1,0 +1,6 @@
+framework module Pods_ICHAT_ICHATUITests {
+  umbrella header "Pods-ICHAT-ICHATUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
